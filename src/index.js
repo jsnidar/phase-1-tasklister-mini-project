@@ -26,22 +26,22 @@ const subBtn = submitButton.addEventListener('click', function (e) {
   newBtnId = '.#btn' + buttonNum.toString()
   const priority = `<label for="new-task-priority"></label>
     <select id = drp${buttonNum} name="priority">
+      <option value="">Select One …</option>
       <option value="high">High Priority</option>
       <option value="med">Medium Priority</option>
       <option value="low">Low Priority</option>
-      <input type='submit'>
-    </select>`
+    </select>
+    <div class="result"></div>`
   listLocation.lastChild.innerHTML = descField.value +  newButton + priority
   
-  document.getElementByID(`drp${buttonNum}`).value.addEventListener('click', function (e) {
-    let color
-    if (e.value = 'high') {
-  color = listLocation.firstChild.style.color = 'red'
-  }else if(e.value = 'med') {
-  color = listLocation.firstChild.style.color = 'orange'
-  }else if(e.value = 'low') {
-  color = listLocation.lastChild.style.color = 'green'}
-  return color
+  document.getElementById(`drp${buttonNum}`).addEventListener('change', function (e) { 
+    
+    if (e.target.value === 'high') {
+      e.target.parentNode.style.color = 'red'
+  }else if(e.target.value == 'med') {
+    e.target.parentNode.style.color = 'orange'
+  }else if(e.target.value == 'low') {
+    e.target.parentNode.style.color = 'green'}
   })
 
   document.getElementById(`btn${buttonNum}`).addEventListener('click', function (e) {
